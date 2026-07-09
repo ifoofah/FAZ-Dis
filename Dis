@@ -6796,14 +6796,22 @@ section[aria-label="Channel header"] [class*="toolbar"] [role="button"]:hover sv
  * ═══════════════════════════════════════════════════════════
  */
 
-/* ── فينييت: تعتيم خفيف على الأطراف فقط ── */
+/* ── الخلفية: جودة كاملة بدون ضبابية ── */
 .appMount__51fd7:before {
-  position: absolute;
-  content: " ";
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 60%, hsla(270, 60%, 3%, 0.35) 100%);
-  pointer-events: none;
-  z-index: 0;
+  display: none !important;
+}
+.appMount__51fd7 {
+  filter: none !important;
+}
+.content__5e434 {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.bg__960e4,
+.app__160d8,
+.layers__160d8 {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* ── خط رفيع تحت الهيدر فقط ── */
@@ -6867,7 +6875,6 @@ section[aria-label="Channel header"] [class*="toolbar"] [role="button"]:hover sv
 .container_c8ffbb,
 .members_c8ffbb {
   background: var(--fz-panel-color) !important;
-  backdrop-filter: blur(var(--app-blur)) saturate(120%);
 }
 
 .sidebar__5e434 .scrollerBase_d125d2,
@@ -6882,7 +6889,6 @@ section[aria-label="Channel header"] [class*="toolbar"] [role="button"]:hover sv
 [class*="membersPopout"],
 aside[class*="members"] {
   background: var(--fz-panel-color) !important;
-  backdrop-filter: blur(var(--app-blur)) saturate(120%);
 }
 
 /* الشات: بدون ظل على النص — أوضح على الخلفية */
