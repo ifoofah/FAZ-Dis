@@ -6393,6 +6393,9 @@ body,
   --fz-light-off: 0.32;
   --fz-light-hover: 0.58;
   --fz-light-on: 1;
+  --fz-glass-text: linear-gradient(135deg, hsl(266, 95%, 78%) 0%, hsl(268, 92%, 52%) 42%, hsl(270, 88%, 28%) 78%, hsl(270, 70%, 8%) 100%);
+  --fz-glass-bg: linear-gradient(145deg, hsla(266, 70%, 38%, 0.18), hsla(270, 85%, 6%, 0.42));
+  --fz-glass-border: inset 0 1px 1px hsla(266, 90%, 75%, 0.22), inset 0 -1px 3px hsla(270, 80%, 2%, 0.55), 0 0 0 1px hsla(266, 90%, 55%, 0.18);
 }
 
 /* ── أيقونات وقوائم القنوات: أبيض دائم + تأثير إضاءة مطفية/مشتغلة ── */
@@ -6692,7 +6695,7 @@ body,
 
 /*
  * ═══════════════════════════════════════════════════════════
- *  إصلاح المرفقات والـ Embeds — نصوص واضحة على الخلفية الداكنة
+ *  المرفقات والـ Embeds — زجاج بنفسجي غامق + كتابة متدرجة
  * ═══════════════════════════════════════════════════════════
  */
 
@@ -6704,15 +6707,14 @@ body,
 .wrapper_d5f3cd,
 .invite__4d3fa,
 .wrapperAudio_cf09d8 {
-  background-color: hsl(0, 0%, 100%, 0.08) !important;
-  border-left-color: hsl(var(--accent-hsl)) !important;
+  background: var(--fz-glass-bg) !important;
+  backdrop-filter: blur(var(--app-blur)) saturate(var(--liquid-glass-saturation)) brightness(1.05);
+  border: none !important;
+  border-left: 3px solid hsl(var(--accent-hsl)) !important;
+  box-shadow: var(--fz-glass-border), var(--liquid-glass-shadow) !important;
 }
 
-/* أسماء الملفات + النص داخل المرفقات = أبيض واضح (مو بنفسجي غامق) */
-.fileWrapper__0ccae,
-.file__0ccae {
-  color: hsl(0, 0%, 90%) !important;
-}
+/* كتابة زجاجية: تدرج بنفسجي → أسود */
 .fileWrapper__0ccae a,
 .file__0ccae a,
 .fileWrapper__0ccae [class*="fileName"],
@@ -6720,66 +6722,67 @@ body,
 .fileWrapper__0ccae [class*="filename"],
 .file__0ccae [class*="filename"],
 .fileWrapper__0ccae [class*="attachmentName"],
-.file__0ccae [class*="attachmentName"] {
-  color: hsl(0, 0%, 92%) !important;
-  -webkit-text-fill-color: hsl(0, 0%, 92%) !important;
-  background-image: none !important;
+.file__0ccae [class*="attachmentName"],
+.embedFull__623de [class*="embedTitle"],
+.embedFull__623de [class*="embedAuthor"],
+.embedCard__44c9a [class*="embedTitle"],
+.cta__9271d {
+  background-image: var(--fz-glass-text) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
   text-shadow: none !important;
-}
-.fileWrapper__0ccae a:hover,
-.file__0ccae a:hover {
-  color: hsl(0, 0%, 100%) !important;
-  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+  font-weight: 600;
 }
 
-/* حجم الملف والمعلومات الثانوية */
+.fileWrapper__0ccae a:hover,
+.file__0ccae a:hover,
+.embedFull__623de [class*="embedTitle"]:hover,
+.embedCard__44c9a [class*="embedTitle"]:hover {
+  background-image: linear-gradient(135deg, hsl(266, 100%, 88%) 0%, hsl(268, 95%, 62%) 50%, hsl(270, 90%, 35%) 100%) !important;
+}
+
+/* الوصف والنص الثانوي: تدرج أخف بنفسجي غامق */
+.embedFull__623de [class*="embedDescription"],
+.embedFull__623de [class*="embedProvider"],
+.embedFull__623de [class*="embedFooter"],
+.embedCard__44c9a [class*="embedDescription"],
+.embedCard__44c9a [class*="embedProvider"],
 .fileWrapper__0ccae [class*="metadata"],
 .file__0ccae [class*="metadata"],
 .fileWrapper__0ccae [class*="size"],
 .file__0ccae [class*="size"] {
-  color: hsl(0, 0%, 62%) !important;
+  background-image: linear-gradient(135deg, hsl(266, 80%, 58%) 0%, hsl(268, 75%, 38%) 60%, hsl(270, 70%, 16%) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  opacity: 0.85;
 }
 
-/* أيقونات الملفات = أبيض */
-.fileWrapper__0ccae svg,
-.file__0ccae svg {
-  color: hsl(0, 0%, 88%) !important;
-}
-
-/* Embed: العنوان والوصف أبيض، الروابط فقط بنفسجي */
-.embedFull__623de,
-.embedCard__44c9a {
-  color: hsl(0, 0%, 88%) !important;
-}
-.embedFull__623de [class*="embedTitle"],
-.embedFull__623de [class*="embedAuthor"],
-.embedFull__623de [class*="embedDescription"],
-.embedFull__623de [class*="embedProvider"],
-.embedFull__623de [class*="embedFooter"],
-.embedCard__44c9a [class*="embedTitle"],
-.embedCard__44c9a [class*="embedDescription"],
-.embedCard__44c9a [class*="embedProvider"] {
-  color: hsl(0, 0%, 90%) !important;
-  -webkit-text-fill-color: hsl(0, 0%, 90%) !important;
-  background-image: none !important;
-  text-shadow: none !important;
-}
+/* روابط الـ embed: بنفسجي متوهج */
 .embedFull__623de a:not([class*="embedTitle"]),
 .embedCard__44c9a a:not([class*="embedTitle"]) {
+  background-image: linear-gradient(135deg, hsl(266, 100%, 82%), hsl(268, 95%, 58%)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* أيقونات الملفات: بنفسجي فاتح مع توهج */
+.fileWrapper__0ccae svg,
+.file__0ccae svg {
   color: hsl(266, 90%, 72%) !important;
-  -webkit-text-fill-color: hsl(266, 90%, 72%) !important;
+  filter: drop-shadow(0 0 4px hsla(266, 95%, 60%, 0.5));
 }
 
-.cta__9271d {
-  color: hsl(0, 0%, 92%) !important;
-}
-
-/* داخل فقاعة الرسالة: خلفية أوضح شوي بدون تكرار */
+/* داخل فقاعة الرسالة */
 .wrapper_c19a55 .fileWrapper__0ccae,
 .wrapper_c19a55 .file__0ccae,
 .wrapper_c19a55 .embedFull__623de,
 .wrapper_c19a55 .embedCard__44c9a {
-  background-color: hsl(0, 0%, 100%, 0.06) !important;
+  background: linear-gradient(145deg, hsla(266, 65%, 32%, 0.14), hsla(270, 80%, 5%, 0.38)) !important;
 }
 
 /*# sourceMappingURL=main.css.map */
