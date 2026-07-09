@@ -9,7 +9,7 @@
 :root {
   /* APP ELEMENTS */
   --app-bg: url(https://i.ibb.co/zWjmbwTQ/asd.png);
-  --app-blur: 6px;
+  --app-blur: 3px;
   --app-margin: 24px;
   --app-radius: 18px;
   --main-rgb: 0,0,0;
@@ -19,8 +19,8 @@
   --sidebar-color: rgba(var(--main-rgb), var(--sidebar-opacity));
   /* ACCENT HSL AND TEXT COLOR SETTINGS */
   --accent-hue: 266;
-  --accent-saturation: 95%;
-  --accent-lightness: 64%;
+  --accent-saturation: 90%;
+  --accent-lightness: 48%;
   --accent-hsl: var(--accent-hue),calc(var(--accent-saturation) * var(--saturation-factor)),var(--accent-lightness);
   --accent-opacity: 0.8;
   --accent-text-color: hsl(0,0%,100%);
@@ -87,7 +87,7 @@
   --chat-search-pill-size: 22px;
   /* POPOUT SETTINGS */
   --popout-color: hsl(0,0%,0%,0.46);
-  --popout-blur: 6px;
+  --popout-blur: 3px;
   --popout-radius: 18px;
   --popout-shadow: 0 20px 40px hsl(0,0%,0%,0.44);
   --popout-shadow-border: inset 0 1px 1px hsl(0,100%,100%,0.35), inset 0 -1px 2px hsl(0,0%,0%,0.25), inset 0 0 0 1px hsl(0,100%,100%,0.04);
@@ -6377,122 +6377,81 @@ body,
 /*
  * ═══════════════════════════════════════════════════════════
  *
- *  FOZAN — LEGENDARY EDITION
- *  ألوان متدرجة متحركة (بنفسجي ← نيون ← فضي) مأخوذة من الخلفية
+ *  FOZAN — LEGENDARY EDITION (نسخة خفيفة على الأداء)
+ *  بنفسجي غامق + أسود — بدون أي أنيميشن مستمر
  *
  * ═══════════════════════════════════════════════════════════
  */
 
-/* ── لوحة التدرج ── */
+/* ── لوحة الألوان: بنفسجي غامق ← أسود ── */
 :root {
-  --fz-grad-1: hsl(265, 100%, 76%);  /* بنفسجي فاتح */
-  --fz-grad-2: hsl(270, 95%, 58%);   /* بنفسجي نيون */
-  --fz-grad-3: hsl(0, 0%, 90%);      /* فضي */
-  --fz-gradient: linear-gradient(90deg, var(--fz-grad-1), var(--fz-grad-2), var(--fz-grad-3), var(--fz-grad-1));
-}
-
-/* ── محرك اللون المتحرك (يتنقل بين ألوان التدرج بسلاسة) ── */
-@property --fz-flow {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: hsl(265, 100%, 76%);
-}
-
-@keyframes fz-color-flow {
-  0%, 100% { --fz-flow: hsl(265, 100%, 76%); }
-  35%      { --fz-flow: hsl(270, 95%, 62%); }
-  70%      { --fz-flow: hsl(0, 0%, 90%); }
-}
-
-@keyframes fz-gradient-slide {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
-}
-
-@keyframes fz-appear {
-  from { opacity: 0; transform: scale(1.015); }
-  to   { opacity: 1; transform: scale(1); }
+  --fz-grad-1: hsl(266, 90%, 58%);   /* بنفسجي */
+  --fz-grad-2: hsl(268, 95%, 34%);   /* بنفسجي غامق */
+  --fz-grad-3: hsl(270, 70%, 12%);   /* أسود بنفسجي */
+  --fz-icon-color: hsl(266, 85%, 56%);
+  --fz-gradient: linear-gradient(135deg, var(--fz-grad-1) 0%, var(--fz-grad-2) 60%, var(--fz-grad-3) 115%);
 }
 
 /* ── كل الأيقونات + النصوص اللي جنبها (أسماء القنوات، القوائم، أزرار التفاعل) ── */
 .theme-dark {
-  animation: fz-color-flow 10s ease-in-out infinite;
-  --icon-primary: var(--fz-flow);
-  --icon-secondary: var(--fz-flow);
-  --icon-tertiary: var(--fz-flow);
-  --channel-icon: var(--fz-flow);
-  --channels-default: var(--fz-flow);
-  --interactive-normal: var(--fz-flow);
-  --interactive-hover: hsl(265, 100%, 90%);
-  --interactive-active: hsl(0, 0%, 100%);
+  --icon-primary: var(--fz-icon-color);
+  --icon-secondary: var(--fz-icon-color);
+  --icon-tertiary: var(--fz-icon-color);
+  --channel-icon: var(--fz-icon-color);
+  --channels-default: var(--fz-icon-color);
+  --interactive-normal: var(--fz-icon-color);
+  --interactive-hover: hsl(266, 85%, 70%);
+  --interactive-active: hsl(266, 100%, 80%);
   /* نص الرسائل يبقى ثابت وواضح للقراءة */
   --text-normal: hsl(0, 0%, 88%);
   --text-default: hsl(0, 0%, 88%);
 }
 
-/* ── أسماء متدرجة (أسماء الأعضاء بالشات + أسماء القنوات + عنوان الهيدر) ── */
+/* ── أسماء متدرجة ثابتة: بنفسجي غامق ← أسود (أسماء الأعضاء + القنوات + الهيدر) ── */
 .username_c19a55,
 .name__2ea32,
 .title__9293f,
 .wordmarkWindows__421ed {
   background-image: var(--fz-gradient);
-  background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   text-shadow: none !important;
-  animation: fz-gradient-slide 8s linear infinite;
 }
 
-/* ── أيقونة الدايركت ماسيج والهوم + السيرفرات الافتراضية = قريدنت ── */
+/* ── أيقونة الدايركت ماسيج والهوم + السيرفرات الافتراضية = قريدنت بنفسجي غامق/أسود ── */
 .childWrapper__6e9f8,
 .circleIconButton__5bc7e {
-  background: linear-gradient(135deg, var(--fz-grad-2) 0%, var(--fz-grad-1) 65%, var(--fz-grad-3) 140%) !important;
+  background: linear-gradient(135deg, var(--fz-grad-1) 0%, var(--fz-grad-2) 60%, var(--fz-grad-3) 120%) !important;
   color: hsl(0, 0%, 100%) !important;
-  box-shadow: 0 0 16px hsla(var(--accent-hsl), 0.45);
 }
 
-/* ── الأزرار الأساسية بتدرج متحرك ── */
+/* ── الأزرار الأساسية بتدرج ثابت ── */
 .lookFilled__201d5:not(.colorRed__201d5),
 .button_a22cb0.primary_a22cb0,
 .newMessagesBar__0f481,
 .bd-button-filled:not(.bd-button-color-red):not(.bd-button-danger) {
-  background-image: linear-gradient(120deg, var(--fz-grad-2), var(--fz-grad-1), var(--fz-grad-2)) !important;
-  background-size: 250% 100% !important;
-  animation: fz-gradient-slide 6s linear infinite;
+  background-image: linear-gradient(120deg, var(--fz-grad-1), var(--fz-grad-2)) !important;
 }
 
-/* ── التولتيب بتدرج ── */
+/* ── التولتيب بتدرج غامق ── */
 .tooltip_c36707, .tooltip__4e35b {
-  background-image: linear-gradient(135deg, var(--fz-grad-2), hsl(266, 85%, 45%)) !important;
+  background-image: linear-gradient(135deg, var(--fz-grad-2), var(--fz-grad-3)) !important;
 }
 
-/* ── سكرول بار بتدرج بنفسجي ── */
+/* ── سكرول بار بنفسجي غامق ── */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsla(265, 95%, 72%, 0.6), hsla(270, 95%, 55%, 0.6)) !important;
+  background: linear-gradient(180deg, hsla(266, 90%, 45%, 0.7), hsla(270, 80%, 20%, 0.7)) !important;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, hsla(265, 95%, 72%, 0.85), hsla(270, 95%, 55%, 0.85)) !important;
+  background: linear-gradient(180deg, hsla(266, 90%, 50%, 0.9), hsla(270, 80%, 25%, 0.9)) !important;
 }
 
-/* ── لمسات إضافية: توهج وحواف مضيئة ── */
+/* ── حواف مضيئة خفيفة حول النافذة ── */
 .layers__160d8 {
-  box-shadow: 0 0 0 1px hsla(var(--accent-hsl), 0.25), 0 0 45px hsla(var(--accent-hsl), 0.12);
-}
-
-.channelTextArea__74017:focus-within {
-  box-shadow: var(--liquid-glass-shadow), 0 0 20px hsla(var(--accent-hsl), 0.35) !important;
-}
-
-.wrapper_c19a55.mentioned__5126c {
-  box-shadow: 0px 0px 16px 4px hsla(var(--mention-hsl), 0.8);
-}
-
-/* ── أنيميشن دخول ناعم عند فتح البرنامج ── */
-.appMount__51fd7 {
-  animation: fz-appear 600ms ease-out;
+  box-shadow: 0 0 0 1px hsla(var(--accent-hsl), 0.25);
 }
 
 /*# sourceMappingURL=main.css.map */
