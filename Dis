@@ -362,7 +362,12 @@ body,
 }
 
 .userAvatar__55bab[style*="box-shadow: 0 0 0 0px var(--status-speaking), inset 0 0 0 2px var(--status-speaking), inset 0 0 0 3px var(--background-base-lower)"] {
-  box-shadow: inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+}
+.userAvatar__55bab[style*="0 0 0 2px var(--status-speaking)"],
+.userAvatar__55bab[style*="0 0 0 3px var(--status-speaking)"],
+.userAvatar__55bab[style*="0 0 0 4px var(--status-speaking)"] {
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 14px hsla(266, 95%, 55%, 0.85), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
 }
 
 .container_bd9e38 {
@@ -653,7 +658,12 @@ body,
   border-radius: var(--card-radius);
 }
 .border__2f4f7[style*="box-shadow: 0 0 0 0px var(--status-speaking), inset 0 0 0 2px var(--status-speaking), inset 0 0 0 3px var(--background-base-lower);"] {
-  box-shadow: 0 0 0 0px hsl(var(--accent-hsl)), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: 0 0 0 0px transparent, inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+}
+.border__2f4f7[style*="0 0 0 2px var(--status-speaking)"],
+.border__2f4f7[style*="0 0 0 3px var(--status-speaking)"],
+.border__2f4f7[style*="0 0 0 4px var(--status-speaking)"] {
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 16px hsla(266, 95%, 55%, 0.75), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
 }
 
 /* DIRECT MESSAGES -> SIDEBAR PROFILE */
@@ -6396,10 +6406,7 @@ body,
   --fz-glass-text: linear-gradient(135deg, hsl(266, 95%, 78%) 0%, hsl(268, 92%, 52%) 42%, hsl(270, 88%, 28%) 78%, hsl(270, 70%, 8%) 100%);
   --fz-glass-bg: linear-gradient(145deg, hsla(266, 70%, 38%, 0.18), hsla(270, 85%, 6%, 0.42));
   --fz-glass-border: inset 0 1px 1px hsla(266, 90%, 75%, 0.22), inset 0 -1px 3px hsla(270, 80%, 2%, 0.55), 0 0 0 1px hsla(266, 90%, 55%, 0.18);
-  --fz-water-bg: linear-gradient(155deg, hsla(266, 80%, 48%, 0.24) 0%, hsla(268, 85%, 32%, 0.2) 40%, hsla(270, 90%, 14%, 0.32) 75%, hsla(266, 75%, 40%, 0.18) 100%);
-  --fz-water-bg-hover: linear-gradient(155deg, hsla(266, 85%, 52%, 0.32) 0%, hsla(268, 88%, 36%, 0.26) 40%, hsla(270, 92%, 16%, 0.38) 75%, hsla(266, 80%, 44%, 0.22) 100%);
-  --fz-water-input: linear-gradient(165deg, hsla(266, 75%, 45%, 0.28) 0%, hsla(268, 82%, 28%, 0.22) 50%, hsla(270, 88%, 10%, 0.35) 100%);
-  --fz-water-shine: inset 0 1px 0 hsla(266, 100%, 88%, 0.14), inset 0 -12px 28px hsla(266, 90%, 55%, 0.1), 0 8px 28px hsla(266, 80%, 35%, 0.18);
+  --message-radius: 6px;
 }
 
 /* ── أيقونات وقوائم القنوات: أبيض دائم + تأثير إضاءة مطفية/مشتغلة ── */
@@ -6412,9 +6419,9 @@ body,
   --interactive-normal: hsl(0, 0%, 100%);
   --interactive-hover: hsl(0, 0%, 100%);
   --interactive-active: hsl(0, 0%, 100%);
-  /* نص الرسائل يبقى ثابت وواضح للقراءة */
-  --text-normal: hsl(0, 0%, 88%);
-  --text-default: hsl(0, 0%, 88%);
+  /* نص الرسائل: أبيض صافي */
+  --text-normal: hsl(0, 0%, 100%);
+  --text-default: hsl(0, 0%, 100%);
 }
 
 /* ── أسماء متدرجة: الشات والهيدر فقط (مو أسماء القنوات) ── */
@@ -6658,11 +6665,13 @@ body,
   box-shadow: 0 0 12px hsla(266, 95%, 60%, 0.85);
 }
 
-/* ── فاصل التاريخ بين الرسائل: كبسولة بنفسجية أنيقة ── */
+/* ── فاصل التاريخ: خفيف وما يقطع الشات ── */
 .content__908e2 {
-  background: linear-gradient(135deg, hsla(266, 90%, 45%, 0.35), hsla(270, 80%, 12%, 0.55));
-  border-radius: 10px;
-  color: hsl(266, 100%, 86%);
+  background: hsla(270, 40%, 8%, 0.55);
+  border-radius: 6px;
+  color: hsl(266, 35%, 62%);
+  font-size: 11px;
+  letter-spacing: 0.02em;
 }
 
 /* ── الأزرار ترتفع شعرة عند الهوفر ── */
@@ -6781,114 +6790,167 @@ body,
   filter: drop-shadow(0 0 4px hsla(266, 95%, 60%, 0.5));
 }
 
-/* داخل فقاعة الرسالة */
+/* داخل فقاعة الرسالة — مرفقات خفيفة بدون صندوق ثقيل */
 .wrapper_c19a55 .fileWrapper__0ccae,
 .wrapper_c19a55 .file__0ccae,
 .wrapper_c19a55 .embedFull__623de,
 .wrapper_c19a55 .embedCard__44c9a {
-  background: linear-gradient(145deg, hsla(266, 65%, 32%, 0.14), hsla(270, 80%, 5%, 0.38)) !important;
+  background: hsla(270, 35%, 6%, 0.38) !important;
+  border: 1px solid hsla(266, 55%, 45%, 0.1) !important;
+  border-left: 2px solid hsla(266, 70%, 52%, 0.35) !important;
+  box-shadow: none !important;
+}
+.wrapper_c19a55 .fileWrapper__0ccae a,
+.wrapper_c19a55 .file__0ccae a,
+.wrapper_c19a55 .embedFull__623de [class*="embedTitle"],
+.wrapper_c19a55 .embedCard__44c9a [class*="embedTitle"] {
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(266, 70%, 78%) !important;
+  color: hsl(266, 70%, 78%) !important;
+}
+.wrapper_c19a55 .embedFull__623de [class*="embedDescription"],
+.wrapper_c19a55 .embedFull__623de [class*="embedFooter"],
+.wrapper_c19a55 .fileWrapper__0ccae [class*="metadata"],
+.wrapper_c19a55 .file__0ccae [class*="metadata"] {
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(266, 15%, 62%) !important;
+  color: hsl(266, 15%, 62%) !important;
+}
+
+/* mention / reply: خط جانبي خفيف بدل الصندوق الكبير */
+.wrapper_c19a55.mentioned__5126c {
+  box-shadow: inset 3px 0 0 hsla(var(--mention-hsl), 0.55) !important;
+  border: none !important;
+  background: hsla(266, 55%, 45%, 0.04) !important;
+}
+.wrapper_c19a55.replying__5126c {
+  box-shadow: inset 3px 0 0 hsla(var(--reply-hsl), 0.55) !important;
+  border: none !important;
+  background: hsla(266, 55%, 45%, 0.04) !important;
 }
 
 /*
  * ═══════════════════════════════════════════════════════════
- *  مائي بنفسجي — فقاعات الرسائل + مربع الكتابة
+ *  الشات — نظيف، شفاف، بنفسجي خفيف (بدون صناديق)
  * ═══════════════════════════════════════════════════════════
  */
 
-/* ── فقاعات الرسائل: زجاج مائي بنفسجي ── */
+/* ── الرسائل: شفافة، تلميع خفيف فقط عند الهوفر ── */
 .wrapper_c19a55 {
-  background: var(--fz-water-bg) !important;
-  backdrop-filter: blur(8px) saturate(165%) brightness(1.08);
-  box-shadow: var(--fz-water-shine), var(--liquid-glass-shadow) !important;
-  border: 1px solid hsla(266, 85%, 62%, 0.14) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: var(--message-radius) !important;
 }
 .mouse-mode.full-motion .wrapper_c19a55:hover,
 .wrapper_c19a55:hover {
-  background: var(--fz-water-bg-hover) !important;
-  box-shadow: var(--fz-water-shine), 0 0 22px hsla(266, 90%, 55%, 0.22), var(--liquid-glass-shadow) !important;
-  border-color: hsla(266, 90%, 68%, 0.22) !important;
+  background: hsla(266, 55%, 45%, 0.05) !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
-/* ── نص الرسالة: تدرج بنفسجي → أسود (زجاجي) ── */
+/* ── نص الرسالة: أبيض/بنفسجي فاتح واضح للقراءة ── */
 .wrapper_c19a55 .markup__75297 {
-  background-image: var(--fz-glass-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-.wrapper_c19a55 .markup__75297 img,
-.wrapper_c19a55 .markup__75297 .emoji,
-.wrapper_c19a55 .markup__75297 .mention,
-.wrapper_c19a55 .markup__75297 code,
-.wrapper_c19a55 .markup__75297 pre {
-  -webkit-text-fill-color: initial;
-  background-image: none;
-  color: inherit;
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+  color: hsl(0, 0%, 100%) !important;
 }
 .wrapper_c19a55 .markup__75297 a {
-  background-image: linear-gradient(135deg, hsl(266, 100%, 82%), hsl(268, 95%, 58%));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: hsl(266, 85%, 72%) !important;
+  -webkit-text-fill-color: hsl(266, 85%, 72%) !important;
+  background-image: none !important;
+  text-shadow: 0 0 10px hsla(266, 90%, 55%, 0.25);
 }
 .wrapper_c19a55 .timestamp_c19a55 {
-  background-image: linear-gradient(135deg, hsl(266, 70%, 58%), hsl(270, 65%, 28%));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.75;
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(266, 20%, 48%) !important;
+  color: hsl(266, 20%, 48%) !important;
+  opacity: 1;
 }
 
-/* ── مربع الكتابة: مائي بنفسجي ── */
+/* ── مربع الكتابة: زجاج غامق خفيف ── */
 .channelTextArea__74017,
 .wrapper__44df5 {
-  background: var(--fz-water-input) !important;
-  backdrop-filter: blur(10px) saturate(170%) brightness(1.1);
-  box-shadow: var(--fz-water-shine), var(--liquid-glass-shadow) !important;
-  border: 1px solid hsla(266, 85%, 60%, 0.18) !important;
+  background: hsla(270, 45%, 5%, 0.42) !important;
+  backdrop-filter: blur(5px) saturate(120%);
+  box-shadow: inset 0 1px 0 hsla(266, 70%, 65%, 0.07), 0 2px 10px hsla(0, 0%, 0%, 0.2) !important;
+  border: 1px solid hsla(266, 60%, 45%, 0.1) !important;
 }
 .channelTextArea__74017:focus-within {
-  background: linear-gradient(165deg, hsla(266, 82%, 50%, 0.36) 0%, hsla(268, 86%, 32%, 0.28) 50%, hsla(270, 90%, 12%, 0.42) 100%) !important;
-  box-shadow: var(--fz-water-shine), 0 0 24px hsla(266, 90%, 55%, 0.28), var(--liquid-glass-shadow) !important;
-  border-color: hsla(266, 95%, 68%, 0.35) !important;
+  background: hsla(266, 40%, 8%, 0.52) !important;
+  box-shadow: inset 0 1px 0 hsla(266, 70%, 65%, 0.1), 0 0 0 1px hsla(266, 70%, 50%, 0.14) !important;
+  border-color: hsla(266, 65%, 52%, 0.2) !important;
 }
 
-/* placeholder + النص اللي تكتبه */
 .channelTextArea__74017 .placeholder__1b31f,
 .wrapper__44df5 .placeholder__1b31f {
-  background-image: linear-gradient(90deg, hsl(266, 85%, 62%), hsl(268, 80%, 38%), hsl(270, 75%, 22%));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  opacity: 0.85;
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(266, 18%, 46%) !important;
+  color: hsl(266, 18%, 46%) !important;
+  opacity: 1;
 }
 .channelTextArea__74017 .editor__1b31f,
 .wrapper__44df5 .editor__1b31f {
-  background-image: var(--fz-glass-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(0, 0%, 92%) !important;
+  color: hsl(0, 0%, 92%) !important;
 }
 
-/* أيقونات مربع الكتابة (+ GIF emoji...) */
+/* أيقونات مربع الكتابة */
 .channelTextArea__74017 svg,
 .attachButton__0923f svg,
 .emojiButton__04eed svg,
 .button__24af7 svg,
 .channelAppLauncher_e6e74f svg {
-  color: hsl(266, 90%, 78%) !important;
-  filter: drop-shadow(0 0 5px hsla(266, 95%, 58%, 0.55));
-  opacity: 0.75;
-  transition: opacity 200ms ease, filter 200ms ease;
+  color: hsl(0, 0%, 100%) !important;
+  filter: none;
+  opacity: 0.42;
+  transition: opacity 180ms ease;
 }
 .attachButton__0923f:hover svg,
 .emojiButton__04eed:hover svg,
 .button__24af7:hover svg {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px hsla(266, 100%, 70%, 0.85));
+  opacity: 0.9;
+}
+
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  الروم الصوتي — الإطار يظهر فقط عند التحدث
+ * ═══════════════════════════════════════════════════════════
+ */
+
+/* صامت: بدون حلقة حول الصورة */
+[class*="userAvatar"][style*="0 0 0 0px var(--status-speaking)"] {
+  box-shadow: inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+}
+
+/* يتكلم: حلقة بنفسجية متوهجة */
+[class*="userAvatar"][style*="0 0 0 2px var(--status-speaking)"],
+[class*="userAvatar"][style*="0 0 0 3px var(--status-speaking)"],
+[class*="userAvatar"][style*="0 0 0 4px var(--status-speaking)"],
+[class*="avatarSpeaking"] {
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 14px hsla(266, 95%, 55%, 0.9), 0 0 24px hsla(266, 90%, 45%, 0.45), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+}
+
+[class*="border"][style*="0 0 0 0px var(--status-speaking)"] {
+  box-shadow: 0 0 0 0px transparent, inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+}
+[class*="border"][style*="0 0 0 2px var(--status-speaking)"],
+[class*="border"][style*="0 0 0 3px var(--status-speaking)"],
+[class*="border"][style*="0 0 0 4px var(--status-speaking)"] {
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 16px hsla(266, 95%, 55%, 0.8), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+}
+
+/* اسم المستخدم: يتوهج فقط لما يتكلم */
+[class*="voiceUser"] [class*="username"]:not([class*="usernameSpeaking"]) {
+  opacity: var(--fz-light-off);
+  text-shadow: none !important;
+}
+[class*="usernameSpeaking"] {
+  opacity: var(--fz-light-on) !important;
+  color: hsl(0, 0%, 100%) !important;
+  text-shadow: 0 0 8px hsla(0, 0%, 100%, 0.85), 0 0 16px hsla(266, 95%, 65%, 0.75) !important;
 }
 
 /*# sourceMappingURL=main.css.map */
