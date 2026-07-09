@@ -6690,4 +6690,96 @@ body,
   border-top-color: hsla(266, 95%, 65%, 0.7);
 }
 
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  إصلاح المرفقات والـ Embeds — نصوص واضحة على الخلفية الداكنة
+ * ═══════════════════════════════════════════════════════════
+ */
+
+.fileWrapper__0ccae,
+.file__0ccae,
+.embedFull__623de,
+.embedCard__44c9a,
+.container__9271d,
+.wrapper_d5f3cd,
+.invite__4d3fa,
+.wrapperAudio_cf09d8 {
+  background-color: hsl(0, 0%, 100%, 0.08) !important;
+  border-left-color: hsl(var(--accent-hsl)) !important;
+}
+
+/* أسماء الملفات + النص داخل المرفقات = أبيض واضح (مو بنفسجي غامق) */
+.fileWrapper__0ccae,
+.file__0ccae {
+  color: hsl(0, 0%, 90%) !important;
+}
+.fileWrapper__0ccae a,
+.file__0ccae a,
+.fileWrapper__0ccae [class*="fileName"],
+.file__0ccae [class*="fileName"],
+.fileWrapper__0ccae [class*="filename"],
+.file__0ccae [class*="filename"],
+.fileWrapper__0ccae [class*="attachmentName"],
+.file__0ccae [class*="attachmentName"] {
+  color: hsl(0, 0%, 92%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 92%) !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+.fileWrapper__0ccae a:hover,
+.file__0ccae a:hover {
+  color: hsl(0, 0%, 100%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+}
+
+/* حجم الملف والمعلومات الثانوية */
+.fileWrapper__0ccae [class*="metadata"],
+.file__0ccae [class*="metadata"],
+.fileWrapper__0ccae [class*="size"],
+.file__0ccae [class*="size"] {
+  color: hsl(0, 0%, 62%) !important;
+}
+
+/* أيقونات الملفات = أبيض */
+.fileWrapper__0ccae svg,
+.file__0ccae svg {
+  color: hsl(0, 0%, 88%) !important;
+}
+
+/* Embed: العنوان والوصف أبيض، الروابط فقط بنفسجي */
+.embedFull__623de,
+.embedCard__44c9a {
+  color: hsl(0, 0%, 88%) !important;
+}
+.embedFull__623de [class*="embedTitle"],
+.embedFull__623de [class*="embedAuthor"],
+.embedFull__623de [class*="embedDescription"],
+.embedFull__623de [class*="embedProvider"],
+.embedFull__623de [class*="embedFooter"],
+.embedCard__44c9a [class*="embedTitle"],
+.embedCard__44c9a [class*="embedDescription"],
+.embedCard__44c9a [class*="embedProvider"] {
+  color: hsl(0, 0%, 90%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 90%) !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+.embedFull__623de a:not([class*="embedTitle"]),
+.embedCard__44c9a a:not([class*="embedTitle"]) {
+  color: hsl(266, 90%, 72%) !important;
+  -webkit-text-fill-color: hsl(266, 90%, 72%) !important;
+}
+
+.cta__9271d {
+  color: hsl(0, 0%, 92%) !important;
+}
+
+/* داخل فقاعة الرسالة: خلفية أوضح شوي بدون تكرار */
+.wrapper_c19a55 .fileWrapper__0ccae,
+.wrapper_c19a55 .file__0ccae,
+.wrapper_c19a55 .embedFull__623de,
+.wrapper_c19a55 .embedCard__44c9a {
+  background-color: hsl(0, 0%, 100%, 0.06) !important;
+}
+
 /*# sourceMappingURL=main.css.map */
