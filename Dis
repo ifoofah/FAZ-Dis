@@ -362,11 +362,9 @@ body,
 }
 
 .userAvatar__55bab[style*="box-shadow: 0 0 0 0px var(--status-speaking), inset 0 0 0 2px var(--status-speaking), inset 0 0 0 3px var(--background-base-lower)"] {
-  box-shadow: inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: none !important;
 }
-.userAvatar__55bab[style*="0 0 0 2px var(--status-speaking)"],
-.userAvatar__55bab[style*="0 0 0 3px var(--status-speaking)"],
-.userAvatar__55bab[style*="0 0 0 4px var(--status-speaking)"] {
+.userAvatar__55bab[style*="var(--status-speaking)"]:not([style*="0 0 0 0px var(--status-speaking)"]) {
   box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 14px hsla(266, 95%, 55%, 0.85), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
 }
 
@@ -658,11 +656,9 @@ body,
   border-radius: var(--card-radius);
 }
 .border__2f4f7[style*="box-shadow: 0 0 0 0px var(--status-speaking), inset 0 0 0 2px var(--status-speaking), inset 0 0 0 3px var(--background-base-lower);"] {
-  box-shadow: 0 0 0 0px transparent, inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: none !important;
 }
-.border__2f4f7[style*="0 0 0 2px var(--status-speaking)"],
-.border__2f4f7[style*="0 0 0 3px var(--status-speaking)"],
-.border__2f4f7[style*="0 0 0 4px var(--status-speaking)"] {
+.border__2f4f7[style*="var(--status-speaking)"]:not([style*="0 0 0 0px var(--status-speaking)"]) {
   box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 16px hsla(266, 95%, 55%, 0.75), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
 }
 
@@ -6407,6 +6403,13 @@ body,
   --fz-glass-bg: linear-gradient(145deg, hsla(266, 70%, 38%, 0.18), hsla(270, 85%, 6%, 0.42));
   --fz-glass-border: inset 0 1px 1px hsla(266, 90%, 75%, 0.22), inset 0 -1px 3px hsla(270, 80%, 2%, 0.55), 0 0 0 1px hsla(266, 90%, 55%, 0.18);
   --message-radius: 6px;
+  --main-content-opacity: 0.52;
+  --main-content-color: rgba(var(--main-rgb), var(--main-content-opacity));
+  --status-speaking: transparent;
+  --fz-input-bg: linear-gradient(135deg, hsla(266, 90%, 48%, 0.72), hsla(268, 95%, 34%, 0.78));
+  --fz-input-bg-focus: linear-gradient(135deg, hsla(266, 90%, 54%, 0.85), hsla(268, 95%, 38%, 0.9));
+  --fz-input-border: hsla(266, 90%, 58%, 0.38);
+  --fz-input-glow: 0 4px 18px hsla(266, 90%, 42%, 0.28);
 }
 
 /* ── أيقونات وقوائم القنوات: أبيض دائم + تأثير إضاءة مطفية/مشتغلة ── */
@@ -6422,18 +6425,117 @@ body,
   /* نص الرسائل: أبيض صافي */
   --text-normal: hsl(0, 0%, 100%);
   --text-default: hsl(0, 0%, 100%);
+  --header-primary: hsl(0, 0%, 100%);
+  --header-secondary: hsla(0, 0%, 100%, 0.62);
 }
 
-/* ── أسماء متدرجة: الشات والهيدر فقط (مو أسماء القنوات) ── */
-.username_c19a55,
+/* ── هيدر القناة: اسم أبيض متوهج وواضح ── */
+.container__9293f,
+section[aria-label="Channel header"],
+[class*="subtitleContainer"] {
+  --header-primary: hsl(0, 0%, 100%);
+  --header-secondary: hsla(0, 0%, 100%, 0.62);
+}
+
 .title__9293f,
+.container__9293f [class*="title"],
+.container__9293f [class*="title"] span,
+.container__9293f h1,
+.container__9293f h1 span,
+[class*="subtitleContainer"] [class*="title"],
+[class*="subtitleContainer"] [class*="title"] span,
+[class*="subtitleContainer"] h1,
+[class*="subtitleContainer"] h1 span,
+section[aria-label="Channel header"] [class*="title"],
+section[aria-label="Channel header"] [class*="title"] span,
+section[aria-label="Channel header"] h1,
+section[aria-label="Channel header"] h1 span {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: hsl(0, 0%, 100%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+  text-shadow: 0 0 8px hsla(266, 95%, 78%, 1), 0 0 20px hsla(266, 90%, 55%, 0.55) !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+/* فاصل | بجانب اسم القناة */
+.container__9293f [class*="divider"],
+.container__9293f [class*="separator"],
+[class*="subtitleContainer"] [class*="divider"] {
+  color: hsla(0, 0%, 100%, 0.4) !important;
+  -webkit-text-fill-color: hsla(0, 0%, 100%, 0.4) !important;
+  opacity: 1 !important;
+}
+
+/* شيل الصندوق/التحديد حول اسم القناة */
+.container__9293f .children__9293f > div:first-child,
+.container__9293f .children__9293f > div:first-child > *,
+section[aria-label="Channel header"] [class*="titleContainer"],
+section[aria-label="Channel header"] [class*="title"] > div,
+section[aria-label="Channel header"] h1[class*="title"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* أيقونة القناة في الهيدر: بنفسجي فاتح متوهج */
+.container__9293f .children__9293f svg,
+.container__9293f [class*="title"] svg,
+section[aria-label="Channel header"] [class*="title"] svg {
+  color: hsl(266, 90%, 78%) !important;
+  fill: currentColor !important;
+  filter: drop-shadow(0 0 8px hsla(266, 95%, 65%, 0.85));
+  opacity: 1 !important;
+}
+
+/* أزرار الهيدر (invite/settings): أبيض خافت → أوضح عند hover */
+.container__9293f [class*="toolbar"] svg,
+section[aria-label="Channel header"] [class*="toolbar"] svg {
+  color: hsl(0, 0%, 100%) !important;
+  opacity: 0.5;
+  filter: none;
+  transition: opacity 180ms ease, filter 180ms ease;
+}
+.container__9293f [class*="toolbar"] [role="button"]:hover svg,
+section[aria-label="Channel header"] [class*="toolbar"] [role="button"]:hover svg {
+  opacity: 0.95;
+  filter: drop-shadow(0 0 6px hsla(266, 95%, 60%, 0.6));
+}
+
+.container__9293f .children__9293f > div:first-child:hover,
+.container__9293f .children__9293f > div:first-child:focus-within,
+[class*="subtitleContainer"] [class*="title"]:hover,
+[class*="subtitleContainer"] [class*="title"]:focus-within {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* شعار Discord بالأعلى (title bar): متدرج بنفسجي */
 .wordmarkWindows__421ed {
-  background-image: var(--fz-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background-image: var(--fz-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
   text-shadow: none !important;
+}
+
+/* ── أسماء المحادثة: ألوان الرولات الأصلية (Discord يحددها) ── */
+.username_c19a55,
+.chat_f75fb0 [class*="username"],
+.wrapper_c19a55 [class*="username"],
+.repliedMessage_c19a55 [class*="username"] {
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
+  font-weight: 600;
 }
 
 /* ── أيقونة الدايركت ماسيج = شعار F الخاص (من مستودعك على GitHub) ── */
@@ -6636,19 +6738,20 @@ body,
  * ═══════════════════════════════════════════════════════════
  */
 
-/* ── فينييت: تعتيم خفيف على أطراف الخلفية عشان الشعار والمحتوى يبرز ── */
+/* ── فينييت: تعتيم خفيف على الأطراف فقط ── */
 .appMount__51fd7:before {
   position: absolute;
   content: " ";
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, hsla(270, 60%, 3%, 0.55) 100%);
+  background: radial-gradient(ellipse at center, transparent 60%, hsla(270, 60%, 3%, 0.35) 100%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* ── خط بنفسجي رفيع تحت هيدر القناة ── */
+/* ── خط بنفسجي رفيع تحت هيدر القناة فقط ── */
 .container__9293f {
-  box-shadow: var(--popout-header-shadow), inset 0 -1px 0 hsla(266, 90%, 55%, 0.35);
+  background: transparent !important;
+  box-shadow: inset 0 -1px 0 hsla(266, 90%, 55%, 0.22) !important;
 }
 
 /* ── لوحة الحساب (تحت يسار): زجاج بتدرج بنفسجي غامق ── */
@@ -6698,12 +6801,32 @@ body,
   box-shadow: 0 0 16px hsla(266, 95%, 60%, 0.75);
 }
 
-/* ── مربع الكتابة: خط قريدنت رفيع فوقه يشتد عند الكتابة ── */
-.channelTextArea__74017 {
-  border-top: 1px solid hsla(266, 90%, 60%, 0.25);
+/* ── منطقة الشات: طبقة قراءة متوازنة (مو شفافة زيادة) ── */
+.chat_f75fb0 {
+  background: linear-gradient(
+    105deg,
+    hsla(270, 55%, 4%, 0.82) 0%,
+    hsla(268, 45%, 3%, 0.58) 45%,
+    hsla(266, 35%, 2%, 0.36) 100%
+  ) !important;
+  backdrop-filter: blur(3px) saturate(115%);
 }
-.channelTextArea__74017:focus-within {
-  border-top-color: hsla(266, 95%, 65%, 0.7);
+
+/* الشات: بدون ظل على النص — أوضح على الخلفية */
+.chat_f75fb0 .markup__75297,
+.chat_f75fb0 .timestamp_c19a55,
+.chat_f75fb0 .repliedTextPreview_c19a55,
+.chat_f75fb0 .repliedMessage_c19a55,
+.chat_f75fb0 [class*="embedDescription"],
+.chat_f75fb0 [class*="embedFooter"] {
+  text-shadow: none !important;
+}
+
+/* أسفل الشات: شريط موحّد لمربع الكتابة */
+.form_f75fb0 {
+  background: transparent !important;
+  border-top: 1px solid hsla(266, 60%, 50%, 0.1);
+  padding-block-start: 10px;
 }
 
 /*
@@ -6831,11 +6954,11 @@ body,
 
 /*
  * ═══════════════════════════════════════════════════════════
- *  الشات — نظيف، شفاف، بنفسجي خفيف (بدون صناديق)
+ *  الشات — متوازن: قراءة واضحة + خلفية ظاهرة
  * ═══════════════════════════════════════════════════════════
  */
 
-/* ── الرسائل: شفافة، تلميع خفيف فقط عند الهوفر ── */
+/* ── الرسائل: شفافة مع تلميع خفيف عند الهوفر ── */
 .wrapper_c19a55 {
   background: transparent !important;
   backdrop-filter: none !important;
@@ -6845,59 +6968,61 @@ body,
 }
 .mouse-mode.full-motion .wrapper_c19a55:hover,
 .wrapper_c19a55:hover {
-  background: hsla(266, 55%, 45%, 0.05) !important;
+  background: hsla(0, 0%, 100%, 0.04) !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-/* ── نص الرسالة: أبيض/بنفسجي فاتح واضح للقراءة ── */
+/* ── نص الرسالة: أبيض صافي ── */
 .wrapper_c19a55 .markup__75297 {
   background-image: none !important;
   -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
   color: hsl(0, 0%, 100%) !important;
+  text-shadow: none !important;
 }
 .wrapper_c19a55 .markup__75297 a {
-  color: hsl(266, 85%, 72%) !important;
-  -webkit-text-fill-color: hsl(266, 85%, 72%) !important;
+  color: hsl(266, 80%, 78%) !important;
+  -webkit-text-fill-color: hsl(266, 80%, 78%) !important;
   background-image: none !important;
-  text-shadow: 0 0 10px hsla(266, 90%, 55%, 0.25);
+  text-shadow: none !important;
 }
 .wrapper_c19a55 .timestamp_c19a55 {
   background-image: none !important;
-  -webkit-text-fill-color: hsl(266, 20%, 48%) !important;
-  color: hsl(266, 20%, 48%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 55%) !important;
+  color: hsl(0, 0%, 55%) !important;
   opacity: 1;
+  text-shadow: none !important;
 }
 
-/* ── مربع الكتابة: زجاج غامق خفيف ── */
+/* ── مربع الكتابة: نفس درجة بنفسجي Voice Connected ── */
 .channelTextArea__74017,
 .wrapper__44df5 {
-  background: hsla(270, 45%, 5%, 0.42) !important;
-  backdrop-filter: blur(5px) saturate(120%);
-  box-shadow: inset 0 1px 0 hsla(266, 70%, 65%, 0.07), 0 2px 10px hsla(0, 0%, 0%, 0.2) !important;
-  border: 1px solid hsla(266, 60%, 45%, 0.1) !important;
+  background: var(--fz-input-bg) !important;
+  backdrop-filter: blur(4px) saturate(130%);
+  box-shadow: var(--fz-input-glow) !important;
+  border: 1px solid var(--fz-input-border) !important;
 }
 .channelTextArea__74017:focus-within {
-  background: hsla(266, 40%, 8%, 0.52) !important;
-  box-shadow: inset 0 1px 0 hsla(266, 70%, 65%, 0.1), 0 0 0 1px hsla(266, 70%, 50%, 0.14) !important;
-  border-color: hsla(266, 65%, 52%, 0.2) !important;
+  background: var(--fz-input-bg-focus) !important;
+  box-shadow: var(--fz-input-glow), 0 0 0 1px hsla(266, 90%, 60%, 0.25) !important;
+  border-color: hsla(266, 95%, 65%, 0.5) !important;
 }
 
 .channelTextArea__74017 .placeholder__1b31f,
 .wrapper__44df5 .placeholder__1b31f {
   background-image: none !important;
-  -webkit-text-fill-color: hsl(266, 18%, 46%) !important;
-  color: hsl(266, 18%, 46%) !important;
+  -webkit-text-fill-color: hsla(0, 0%, 100%, 0.55) !important;
+  color: hsla(0, 0%, 100%, 0.55) !important;
   opacity: 1;
 }
 .channelTextArea__74017 .editor__1b31f,
 .wrapper__44df5 .editor__1b31f {
   background-image: none !important;
-  -webkit-text-fill-color: hsl(0, 0%, 92%) !important;
-  color: hsl(0, 0%, 92%) !important;
+  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+  color: hsl(0, 0%, 100%) !important;
 }
 
-/* أيقونات مربع الكتابة */
+/* أيقونات مربع الكتابة: أبيض مثل أزرار الصوت */
 .channelTextArea__74017 svg,
 .attachButton__0923f svg,
 .emojiButton__04eed svg,
@@ -6905,41 +7030,55 @@ body,
 .channelAppLauncher_e6e74f svg {
   color: hsl(0, 0%, 100%) !important;
   filter: none;
-  opacity: 0.42;
-  transition: opacity 180ms ease;
+  opacity: 0.78;
+  transition: opacity 180ms ease, filter 180ms ease;
 }
 .attachButton__0923f:hover svg,
 .emojiButton__04eed:hover svg,
 .button__24af7:hover svg {
-  opacity: 0.9;
+  opacity: 1;
+  filter: drop-shadow(0 0 5px hsla(0, 0%, 100%, 0.45));
+}
+
+/* embeds وصور داخل الشات: حواف ناعمة بدون صندوق ثقيل */
+.wrapper_c19a55 [class*="embed"],
+.wrapper_c19a55 [class*="imageContent"],
+.wrapper_c19a55 [class*="visualMediaItem"] {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 /*
  * ═══════════════════════════════════════════════════════════
- *  الروم الصوتي — الإطار يظهر فقط عند التحدث
+ *  الروم الصوتي — الحلقة تظهر فقط عند التحدث
+ *  (الصامت: outer ring = 0px | النشط: outer ring > 0px)
  * ═══════════════════════════════════════════════════════════
  */
 
-/* صامت: بدون حلقة حول الصورة */
-[class*="userAvatar"][style*="0 0 0 0px var(--status-speaking)"] {
-  box-shadow: inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+/* صامت: بدون أي حلقة */
+.sidebar__5e434 [class*="userAvatar"],
+[class*="voiceUser"] [class*="userAvatar"],
+[class*="voiceUser"] [class*="avatar"] {
+  box-shadow: none !important;
+  outline: none !important;
 }
 
-/* يتكلم: حلقة بنفسجية متوهجة */
-[class*="userAvatar"][style*="0 0 0 2px var(--status-speaking)"],
-[class*="userAvatar"][style*="0 0 0 3px var(--status-speaking)"],
-[class*="userAvatar"][style*="0 0 0 4px var(--status-speaking)"],
+/* يتكلم: outer ring مو صفر، أو class/data speaking */
+.sidebar__5e434 [class*="userAvatar"][style*="var(--status-speaking)"]:not([style*="0 0 0 0px var(--status-speaking)"]),
+[class*="voiceUser"] [class*="userAvatar"][style*="var(--status-speaking)"]:not([style*="0 0 0 0px var(--status-speaking)"]),
+[class*="voiceUser"] [class*="avatarSpeaking"],
+[class*="voiceUser"] [class*="avatarSpeaking"] [class*="userAvatar"],
+[class*="voiceUser"][data-speaking="true"] [class*="userAvatar"],
 [class*="avatarSpeaking"] {
-  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 14px hsla(266, 95%, 55%, 0.9), 0 0 24px hsla(266, 90%, 45%, 0.45), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 14px hsla(266, 95%, 55%, 0.9), 0 0 24px hsla(266, 90%, 45%, 0.45) !important;
 }
 
+/* فيديو كول */
 [class*="border"][style*="0 0 0 0px var(--status-speaking)"] {
-  box-shadow: 0 0 0 0px transparent, inset 0 0 0 2px transparent, inset 0 0 0 3px var(--background-base-lower) !important;
+  box-shadow: none !important;
 }
-[class*="border"][style*="0 0 0 2px var(--status-speaking)"],
-[class*="border"][style*="0 0 0 3px var(--status-speaking)"],
-[class*="border"][style*="0 0 0 4px var(--status-speaking)"] {
-  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 16px hsla(266, 95%, 55%, 0.8), inset 0 0 0 2px hsl(var(--accent-hsl)), inset 0 0 0 3px var(--background-base-lower) !important;
+[class*="border"][style*="var(--status-speaking)"]:not([style*="0 0 0 0px var(--status-speaking)"]) {
+  box-shadow: 0 0 0 2px hsl(var(--accent-hsl)), 0 0 16px hsla(266, 95%, 55%, 0.8) !important;
 }
 
 /* اسم المستخدم: يتوهج فقط لما يتكلم */
@@ -6947,7 +7086,8 @@ body,
   opacity: var(--fz-light-off);
   text-shadow: none !important;
 }
-[class*="usernameSpeaking"] {
+[class*="usernameSpeaking"],
+[class*="voiceUser"][data-speaking="true"] [class*="username"] {
   opacity: var(--fz-light-on) !important;
   color: hsl(0, 0%, 100%) !important;
   text-shadow: 0 0 8px hsla(0, 0%, 100%, 0.85), 0 0 16px hsla(266, 95%, 65%, 0.75) !important;
