@@ -6388,28 +6388,30 @@ body,
   --fz-grad-1: hsl(266, 90%, 58%);   /* بنفسجي */
   --fz-grad-2: hsl(268, 95%, 34%);   /* بنفسجي غامق */
   --fz-grad-3: hsl(270, 70%, 12%);   /* أسود بنفسجي */
-  --fz-icon-color: hsl(266, 85%, 56%);
+  --fz-icon-color: hsl(0, 0%, 100%);
   --fz-gradient: linear-gradient(135deg, var(--fz-grad-1) 0%, var(--fz-grad-2) 60%, var(--fz-grad-3) 115%);
+  --fz-light-off: 0.32;
+  --fz-light-hover: 0.58;
+  --fz-light-on: 1;
 }
 
-/* ── كل الأيقونات + النصوص اللي جنبها (أسماء القنوات، القوائم، أزرار التفاعل) ── */
+/* ── أيقونات وقوائم القنوات: أبيض دائم + تأثير إضاءة مطفية/مشتغلة ── */
 .theme-dark {
-  --icon-primary: var(--fz-icon-color);
-  --icon-secondary: var(--fz-icon-color);
-  --icon-tertiary: var(--fz-icon-color);
-  --channel-icon: var(--fz-icon-color);
-  --channels-default: var(--fz-icon-color);
-  --interactive-normal: var(--fz-icon-color);
-  --interactive-hover: hsl(266, 85%, 70%);
-  --interactive-active: hsl(266, 100%, 80%);
+  --icon-primary: hsl(0, 0%, 100%);
+  --icon-secondary: hsl(0, 0%, 100%);
+  --icon-tertiary: hsl(0, 0%, 100%);
+  --channel-icon: hsl(0, 0%, 100%);
+  --channels-default: hsl(0, 0%, 100%);
+  --interactive-normal: hsl(0, 0%, 100%);
+  --interactive-hover: hsl(0, 0%, 100%);
+  --interactive-active: hsl(0, 0%, 100%);
   /* نص الرسائل يبقى ثابت وواضح للقراءة */
   --text-normal: hsl(0, 0%, 88%);
   --text-default: hsl(0, 0%, 88%);
 }
 
-/* ── أسماء متدرجة ثابتة: بنفسجي غامق ← أسود (أسماء الأعضاء + القنوات + الهيدر) ── */
+/* ── أسماء متدرجة: الشات والهيدر فقط (مو أسماء القنوات) ── */
 .username_c19a55,
-.name__2ea32,
 .title__9293f,
 .wordmarkWindows__421ed {
   background-image: var(--fz-gradient);
@@ -6470,71 +6472,130 @@ body,
   box-shadow: 0 0 0 1px hsla(var(--accent-hsl), 0.25);
 }
 
+
 /*
- * ═══════════════════════════════════════════════════════════
- *  حالات القنوات — كل حالة لها شخصيتها
- *  عادية: بنفسجي غامق  |  فيها إشعار: مضيئة  |  اللي أنت فيها: كبسولة متوهجة
- * ═══════════════════════════════════════════════════════════
+ * FZAN LIGHT SYSTEM - white icons, off/on glow states
  */
 
-/* انتقال ناعم بين الحالات */
-.link__2ea32 {
-  transition: background-color 200ms ease, box-shadow 200ms ease;
+.sidebar__5e434 .link__2ea32,
+.privateChannels_e6b769 .link__2ea32,
+.sidebar__5e434 .content__07f91,
+.privateChannels_e6b769 .channel__972a0 {
+  transition: background-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
 }
 
-/* ── هوفر: يوضح شوي ── */
-.link__2ea32:hover .name__2ea32 {
-  background-image: linear-gradient(135deg, hsl(266, 95%, 78%), hsl(267, 90%, 50%));
+.sidebar__5e434 .link__2ea32 svg,
+.privateChannels_e6b769 .link__2ea32 svg,
+.sidebar__5e434 .link__2ea32 path[fill],
+.privateChannels_e6b769 .link__2ea32 path[fill] {
+  color: hsl(0, 0%, 100%) !important;
+  fill: currentColor !important;
 }
 
-/* ── قناة فيها إشعار (غير مقروءة): اسم مضيء + خط جانبي متوهج ── */
-.modeUnread__2ea32 .link__2ea32,
-.link__2ea32.modeUnread__2ea32 {
-  --channel-icon: hsl(266, 100%, 82%);
-  --channels-default: hsl(266, 100%, 85%);
-  --interactive-normal: hsl(266, 100%, 82%);
-  background: linear-gradient(90deg, hsla(266, 90%, 55%, 0.16), transparent 75%);
-  box-shadow: inset 3px 0 0 hsl(266, 95%, 64%);
-}
-.modeUnread__2ea32 .name__2ea32 {
-  background-image: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(266, 100%, 80%) 100%);
-  font-weight: 600;
-}
-.modeUnread__2ea32 .link__2ea32 svg {
-  filter: drop-shadow(0 0 5px hsla(266, 95%, 65%, 0.9));
+.sidebar__5e434 .link__2ea32 .name__2ea32,
+.privateChannels_e6b769 .link__2ea32 .name__2ea32,
+.sidebar__5e434 .content__07f91,
+.privateChannels_e6b769 .channel__972a0 {
+  background-image: none !important;
+  -webkit-text-fill-color: hsl(0, 0%, 100%) !important;
+  color: hsl(0, 0%, 100%) !important;
+  text-shadow: none !important;
 }
 
-/* ── القناة اللي أنت متواجد فيها (نصية أو صوتية): كبسولة قريدنت متوهجة ── */
+.sidebar__5e434 .link__2ea32,
+.privateChannels_e6b769 .link__2ea32 {
+  background: transparent;
+  box-shadow: none;
+}
+.sidebar__5e434 .link__2ea32 svg,
+.privateChannels_e6b769 .link__2ea32 svg {
+  opacity: var(--fz-light-off);
+  filter: none;
+  transition: opacity 200ms ease, filter 200ms ease;
+}
+.sidebar__5e434 .link__2ea32 .name__2ea32,
+.privateChannels_e6b769 .link__2ea32 .name__2ea32 {
+  opacity: var(--fz-light-off);
+  font-weight: 500;
+  transition: opacity 200ms ease, text-shadow 200ms ease;
+}
+
+.sidebar__5e434 .link__2ea32:hover,
+.privateChannels_e6b769 .link__2ea32:hover {
+  background: hsla(0, 0%, 100%, 0.04);
+}
+.sidebar__5e434 .link__2ea32:hover svg,
+.privateChannels_e6b769 .link__2ea32:hover svg,
+.sidebar__5e434 .link__2ea32:hover .name__2ea32,
+.privateChannels_e6b769 .link__2ea32:hover .name__2ea32 {
+  opacity: var(--fz-light-hover);
+}
+
 .modeSelected__2ea32 .link__2ea32,
 .modeConnected__2ea32 .link__2ea32,
 .link__2ea32.modeSelected__2ea32,
 .link__2ea32.modeConnected__2ea32 {
-  --channel-icon: hsl(0, 0%, 100%);
-  --channels-default: hsl(0, 0%, 100%);
-  --interactive-normal: hsl(0, 0%, 100%);
-  background: linear-gradient(90deg, hsla(266, 95%, 46%, 0.55), hsla(270, 85%, 16%, 0.55)) !important;
-  box-shadow: inset 0 0 0 1px hsla(266, 90%, 70%, 0.45), 0 0 14px hsla(266, 95%, 50%, 0.3);
-}
-.modeSelected__2ea32 .name__2ea32,
-.modeConnected__2ea32 .name__2ea32 {
-  background-image: none;
-  -webkit-text-fill-color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 100%);
-  font-weight: 700;
+  background: linear-gradient(90deg, hsla(266, 95%, 50%, 0.35), hsla(270, 80%, 10%, 0.2)) !important;
+  box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.12), 0 0 12px hsla(266, 95%, 55%, 0.35);
 }
 .modeSelected__2ea32 .link__2ea32 svg,
-.modeConnected__2ea32 .link__2ea32 svg {
-  filter: drop-shadow(0 0 6px hsla(266, 100%, 75%, 0.9));
+.modeConnected__2ea32 .link__2ea32 svg,
+.link__2ea32.modeSelected__2ea32 svg,
+.link__2ea32.modeConnected__2ea32 svg {
+  opacity: var(--fz-light-on) !important;
+  filter: drop-shadow(0 0 4px hsl(0, 0%, 100%)) drop-shadow(0 0 10px hsla(266, 95%, 70%, 0.9)) !important;
+}
+.modeSelected__2ea32 .link__2ea32 .name__2ea32,
+.modeConnected__2ea32 .link__2ea32 .name__2ea32,
+.link__2ea32.modeSelected__2ea32 .name__2ea32,
+.link__2ea32.modeConnected__2ea32 .name__2ea32 {
+  opacity: var(--fz-light-on) !important;
+  font-weight: 700;
+  text-shadow: 0 0 8px hsla(0, 0%, 100%, 0.85), 0 0 16px hsla(266, 95%, 65%, 0.6) !important;
 }
 
-/* ── القنوات المكتومة: باهتة عشان ما تشتت ── */
+.modeUnread__2ea32 .link__2ea32,
+.link__2ea32.modeUnread__2ea32 {
+  background: linear-gradient(90deg, hsla(266, 90%, 55%, 0.1), transparent 75%);
+  box-shadow: inset 3px 0 0 hsla(266, 95%, 64%, 0.7);
+}
+.modeUnread__2ea32 .link__2ea32 svg,
+.link__2ea32.modeUnread__2ea32 svg {
+  opacity: 0.72 !important;
+  filter: drop-shadow(0 0 4px hsla(0, 0%, 100%, 0.5)) !important;
+}
+.modeUnread__2ea32 .link__2ea32 .name__2ea32,
+.link__2ea32.modeUnread__2ea32 .name__2ea32 {
+  opacity: 0.85 !important;
+  font-weight: 600;
+  text-shadow: 0 0 6px hsla(0, 0%, 100%, 0.4) !important;
+}
+
+.modeUnread__2ea32.modeSelected__2ea32 .link__2ea32 svg,
+.modeUnread__2ea32.modeConnected__2ea32 .link__2ea32 svg {
+  opacity: var(--fz-light-on) !important;
+  filter: drop-shadow(0 0 4px hsl(0, 0%, 100%)) drop-shadow(0 0 12px hsla(266, 95%, 70%, 1)) !important;
+}
+
 .modeMuted__2ea32 .link__2ea32,
 .link__2ea32.modeMuted__2ea32 {
-  opacity: 0.4;
+  opacity: 0.25;
 }
 .modeMuted__2ea32 .link__2ea32:hover,
 .link__2ea32.modeMuted__2ea32:hover {
-  opacity: 0.75;
+  opacity: 0.5;
+}
+
+.sidebar__5e434 .header_f37cb1,
+.sidebar__5e434 .containerDefault_f37cb1,
+.sidebar__5e434 .containerDefault_f37cb1 svg {
+  color: hsl(0, 0%, 100%) !important;
+  opacity: 0.45;
+}
+.sidebar__5e434 .containerDefault_f37cb1:hover {
+  opacity: 0.7;
+}
+
 }
 
 /* ── عداد المنشن: قريدنت متوهج مع نبض خفيف ── */
