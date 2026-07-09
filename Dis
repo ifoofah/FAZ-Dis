@@ -6396,6 +6396,10 @@ body,
   --fz-glass-text: linear-gradient(135deg, hsl(266, 95%, 78%) 0%, hsl(268, 92%, 52%) 42%, hsl(270, 88%, 28%) 78%, hsl(270, 70%, 8%) 100%);
   --fz-glass-bg: linear-gradient(145deg, hsla(266, 70%, 38%, 0.18), hsla(270, 85%, 6%, 0.42));
   --fz-glass-border: inset 0 1px 1px hsla(266, 90%, 75%, 0.22), inset 0 -1px 3px hsla(270, 80%, 2%, 0.55), 0 0 0 1px hsla(266, 90%, 55%, 0.18);
+  --fz-water-bg: linear-gradient(155deg, hsla(266, 80%, 48%, 0.24) 0%, hsla(268, 85%, 32%, 0.2) 40%, hsla(270, 90%, 14%, 0.32) 75%, hsla(266, 75%, 40%, 0.18) 100%);
+  --fz-water-bg-hover: linear-gradient(155deg, hsla(266, 85%, 52%, 0.32) 0%, hsla(268, 88%, 36%, 0.26) 40%, hsla(270, 92%, 16%, 0.38) 75%, hsla(266, 80%, 44%, 0.22) 100%);
+  --fz-water-input: linear-gradient(165deg, hsla(266, 75%, 45%, 0.28) 0%, hsla(268, 82%, 28%, 0.22) 50%, hsla(270, 88%, 10%, 0.35) 100%);
+  --fz-water-shine: inset 0 1px 0 hsla(266, 100%, 88%, 0.14), inset 0 -12px 28px hsla(266, 90%, 55%, 0.1), 0 8px 28px hsla(266, 80%, 35%, 0.18);
 }
 
 /* ── أيقونات وقوائم القنوات: أبيض دائم + تأثير إضاءة مطفية/مشتغلة ── */
@@ -6783,6 +6787,108 @@ body,
 .wrapper_c19a55 .embedFull__623de,
 .wrapper_c19a55 .embedCard__44c9a {
   background: linear-gradient(145deg, hsla(266, 65%, 32%, 0.14), hsla(270, 80%, 5%, 0.38)) !important;
+}
+
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  مائي بنفسجي — فقاعات الرسائل + مربع الكتابة
+ * ═══════════════════════════════════════════════════════════
+ */
+
+/* ── فقاعات الرسائل: زجاج مائي بنفسجي ── */
+.wrapper_c19a55 {
+  background: var(--fz-water-bg) !important;
+  backdrop-filter: blur(8px) saturate(165%) brightness(1.08);
+  box-shadow: var(--fz-water-shine), var(--liquid-glass-shadow) !important;
+  border: 1px solid hsla(266, 85%, 62%, 0.14) !important;
+}
+.mouse-mode.full-motion .wrapper_c19a55:hover,
+.wrapper_c19a55:hover {
+  background: var(--fz-water-bg-hover) !important;
+  box-shadow: var(--fz-water-shine), 0 0 22px hsla(266, 90%, 55%, 0.22), var(--liquid-glass-shadow) !important;
+  border-color: hsla(266, 90%, 68%, 0.22) !important;
+}
+
+/* ── نص الرسالة: تدرج بنفسجي → أسود (زجاجي) ── */
+.wrapper_c19a55 .markup__75297 {
+  background-image: var(--fz-glass-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.wrapper_c19a55 .markup__75297 img,
+.wrapper_c19a55 .markup__75297 .emoji,
+.wrapper_c19a55 .markup__75297 .mention,
+.wrapper_c19a55 .markup__75297 code,
+.wrapper_c19a55 .markup__75297 pre {
+  -webkit-text-fill-color: initial;
+  background-image: none;
+  color: inherit;
+}
+.wrapper_c19a55 .markup__75297 a {
+  background-image: linear-gradient(135deg, hsl(266, 100%, 82%), hsl(268, 95%, 58%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.wrapper_c19a55 .timestamp_c19a55 {
+  background-image: linear-gradient(135deg, hsl(266, 70%, 58%), hsl(270, 65%, 28%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.75;
+}
+
+/* ── مربع الكتابة: مائي بنفسجي ── */
+.channelTextArea__74017,
+.wrapper__44df5 {
+  background: var(--fz-water-input) !important;
+  backdrop-filter: blur(10px) saturate(170%) brightness(1.1);
+  box-shadow: var(--fz-water-shine), var(--liquid-glass-shadow) !important;
+  border: 1px solid hsla(266, 85%, 60%, 0.18) !important;
+}
+.channelTextArea__74017:focus-within {
+  background: linear-gradient(165deg, hsla(266, 82%, 50%, 0.36) 0%, hsla(268, 86%, 32%, 0.28) 50%, hsla(270, 90%, 12%, 0.42) 100%) !important;
+  box-shadow: var(--fz-water-shine), 0 0 24px hsla(266, 90%, 55%, 0.28), var(--liquid-glass-shadow) !important;
+  border-color: hsla(266, 95%, 68%, 0.35) !important;
+}
+
+/* placeholder + النص اللي تكتبه */
+.channelTextArea__74017 .placeholder__1b31f,
+.wrapper__44df5 .placeholder__1b31f {
+  background-image: linear-gradient(90deg, hsl(266, 85%, 62%), hsl(268, 80%, 38%), hsl(270, 75%, 22%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0.85;
+}
+.channelTextArea__74017 .editor__1b31f,
+.wrapper__44df5 .editor__1b31f {
+  background-image: var(--fz-glass-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* أيقونات مربع الكتابة (+ GIF emoji...) */
+.channelTextArea__74017 svg,
+.attachButton__0923f svg,
+.emojiButton__04eed svg,
+.button__24af7 svg,
+.channelAppLauncher_e6e74f svg {
+  color: hsl(266, 90%, 78%) !important;
+  filter: drop-shadow(0 0 5px hsla(266, 95%, 58%, 0.55));
+  opacity: 0.75;
+  transition: opacity 200ms ease, filter 200ms ease;
+}
+.attachButton__0923f:hover svg,
+.emojiButton__04eed:hover svg,
+.button__24af7:hover svg {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px hsla(266, 100%, 70%, 0.85));
 }
 
 /*# sourceMappingURL=main.css.map */
